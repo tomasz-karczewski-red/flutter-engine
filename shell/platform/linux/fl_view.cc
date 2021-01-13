@@ -6,6 +6,10 @@
 
 #include "flutter/shell/platform/linux/fl_view_private.h"
 
+#include <gdk/gdkwayland.h>
+#if defined(GDK_WINDOWING_X11) && !defined(DISALBE_X11_BACKEND)
+#include <gdk/gdkx.h>
+#endif
 #include <cstring>
 
 #include "flutter/shell/platform/linux/fl_accessibility_plugin.h"
@@ -162,6 +166,12 @@ static void fl_view_plugin_registry_iface_init(
 }
 
 static void redispatch_key_event_by_gtk(gpointer gdk_event);
+static FlRenderer* fl_view_get_renderer_for_display(GdkDisplay* display) {
+#if defined(GDK_WINDOWING_X11) && !defined(DISALBE_X11_BACKEND)
+  if (GDK_IS_X11_DISPLAY(display)) {
+    return FL_RENDERER(fl_renderer_x11_new());
+  }
+#endif
 
 static gboolean text_input_im_filter_by_gtk(GtkIMContext* im_context,
                                             gpointer gdk_event);
