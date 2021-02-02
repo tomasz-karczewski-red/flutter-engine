@@ -677,7 +677,7 @@ hooks = [
     ],
   },
   {
-    'name': 'linux_sysroot_x64',
+    'name': 'linux_sysroot',
     'pattern': '.',
     'condition': 'download_linux_deps',
     'action': [
@@ -685,17 +685,18 @@ hooks = [
       'src/build/linux/sysroot_scripts/install-sysroot.py',
       '--arch=x64'],
   },
+#  xaxa {
+#    'name': 'linux_sysroot_arm64',
+#    'pattern': '.',
+#    'condition': 'download_linux_deps',
+#    'action': [
+#      'python',
+#      'src/build/linux/sysroot_scripts/install-sysroot.py',
+#      '--arch=arm64'],
+# xaxa  },
   {
-    'name': 'linux_sysroot_arm64',
-    'pattern': '.',
-    'condition': 'download_linux_deps',
-    'action': [
-      'python',
-      'src/build/linux/sysroot_scripts/install-sysroot.py',
-      '--arch=arm64'],
-  },
-  {
-    'name': 'pub get --offline',
+#  xaxa  'name': 'pub get --offline',
+    'name': 'dart package config',
     'pattern': '.',
     'action': [
       'python',
