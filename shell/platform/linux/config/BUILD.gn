@@ -7,7 +7,7 @@ import("//build/config/linux/pkg_config.gni")
 import("//flutter/shell/platform/glfw/config.gni")
 
 if (use_wayland_backend) {
-  pkg_config("wayland") {
+  pkg_config("wayland-egl") {
     packages = [
       "wayland-client",
       "wayland-egl",
